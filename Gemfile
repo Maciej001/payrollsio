@@ -2,6 +2,8 @@ source 'https://rubygems.org'
 
 gem 'rails', '4.1.4'
 
+gem 'devise'
+
 gem 'pg'
 gem 'rails_12factor', group: :production
 
