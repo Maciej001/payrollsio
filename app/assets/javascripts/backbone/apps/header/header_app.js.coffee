@@ -1,5 +1,5 @@
 @Payrollsio.module "HeaderApp", (HeaderApp, App, Backbone, Marionette, $, _) ->
-	# @startWithParent = false
+	@startWithParent = false
 
 	API = 
 		list: (navs) ->

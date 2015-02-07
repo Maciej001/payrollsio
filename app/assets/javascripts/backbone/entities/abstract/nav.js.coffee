@@ -29,7 +29,7 @@
 	API = 
 		getNavs: ->
 			navs = new Entities.NavsCollection [
-				{ name: "Login", 		url: "#", 	icon: "fi fi-torso" }
+				{ name: "Hi, Maciej", 		url: "#", 	icon: "fi fi-torso" }
 			]  
 
 	App.reqres.setHandler "nav:entities", ->

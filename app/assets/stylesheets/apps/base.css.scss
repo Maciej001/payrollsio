@@ -1,5 +1,11 @@
+*, body, #{headings()}, p, li, a {
+	font-family: 'Roboto', Arial, sans-serif;
+	color: $font-black;
+}
+
 #wrap	{  
 	height: auto !important; 
 	min-height: 100%; 
 	margin-bottom: -$pushHeight;  
 } 
+

@@ -1,0 +1,16 @@
+.btn-yellow 	{
+	background-color: $yellow;
+	&:hover {background: darken($yellow, 15%);}
+}
+.btn-red 	{
+	background-color: $red;
+	&:hover {background: darken($red, 25%);}
+}
+.btn-blue 	{
+	background-color: $blue;
+	&:hover {background: darken($blue, 25%);}
+}
+.btn-green 	{
+	background-color: $green;
+	&:hover {background: darken($green, 25%);}
+}

@@ -1,0 +1,19 @@
+<div class="row">
+	<div class="large-12 columns">
+
+			<div id="user-actions" class="large-6 columns">
+				<ul id="user-buttons">
+					<li class="button btn-green">Market</li>
+					<li class="button btn-yellow">Account</li>
+					<li class="button btn-red">Panic button</li>
+				</ul>
+			</div>
+			<div id="user-stats" class="large-6 columns">
+				<ul>
+					<li>Account balance:		1234</li>
+					<li>Open positions:			short 25, at 234</li>
+				</ul>
+			</div>
+
+	</div>
+</div>

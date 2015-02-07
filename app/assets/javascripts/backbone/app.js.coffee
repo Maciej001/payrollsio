@@ -12,12 +12,15 @@
 
 	App.addRegions
 		headerRegion: "#header-region"
-		mainRegion:		"#main-region"
+		userRegion:		"#user-region"
+		marketRegion:	"#market-region"
 		footerRegion:	"#footer-region"
 
 	App.addInitializer ->
 		App.module("HeaderApp").start(App.navs)
 		App.module("FooterApp").start()
+		App.module("UserApp").start()
+		App.module("MarketApp").start()
 
 	# navs is now accecible in listController as an option
 	# App.vent.on "nav:choose", (nav) ->
@@ -28,7 +31,7 @@
 		@startHistory()
 		@navigate(@rootRoute, trigger: true) unless @getCurrentRoute()
 
-	# App.reqres.setHandler "default:region", ->
-	# 	App.mainRegion
+	App.reqres.setHandler "default:region", ->
+		App.marketRegion
 
 	App

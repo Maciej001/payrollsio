@@ -1,8 +1,9 @@
 // fonts
+body, #{headings()}, p, li, a, i { color: white;}
 #header-region, .contain-to-grid, .top-bar, .top-bar-section ul li {
 	height: 60px;
 	background-color: $blue;
-		#{headings()} {
+		#{headings()},li,a,span,icon,p {
 			color: 		white;
 		}
 	ul, li, a, h3 {
@@ -22,7 +23,7 @@
 	&:hover {
 		cursor: pointer;
 	}
-	span, icon .fi {
+	span, i {
 		font-size: 1rem;
 	}
 }
