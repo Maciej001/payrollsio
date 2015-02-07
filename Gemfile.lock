@@ -204,7 +204,7 @@ PLATFORMS
 DEPENDENCIES
   backbone-on-rails
   coffee-rails (~> 4.0.0)
-  compass-rails (~> 2.0.0)
+  compass-rails
   devise
   font-awesome-rails
   foundation-icons-sass-rails
@@ -221,7 +221,7 @@ DEPENDENCIES
   rabl
   rails (= 4.1.4)
   rails_12factor
-  sass-rails (~> 5.0.0.beta1)
+  sass-rails
   sdoc (~> 0.4.0)
   spinjs-rails
   spring

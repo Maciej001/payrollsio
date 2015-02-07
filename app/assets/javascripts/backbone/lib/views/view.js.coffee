@@ -1,4 +1,4 @@
-@PlanetExpress.module "Views", (Views, App, Backbone, Marionette, $, _) ->
+@Payrollsio.module "Views", (Views, App, Backbone, Marionette, $, _) ->
 
 	_destroy = Marionette.View::destroy
 	_.extend Marionette.View::,

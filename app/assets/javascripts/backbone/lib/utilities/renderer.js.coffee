@@ -1,6 +1,6 @@
 # JST looks by default into javascript directory
 
-@PlanetExpress.module "Utilities", (Utilities, App, Backbone, Marionette, $, _) ->
+@Payrollsio.module "Utilities", (Utilities, App, Backbone, Marionette, $, _) ->
 
 	_.extend Marionette.Renderer, 
 
