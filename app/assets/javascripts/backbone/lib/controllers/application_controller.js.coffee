@@ -46,7 +46,7 @@
 
 		_manageView: (view, options) ->
 			if options.loading
-				App.execute "show:loading", view, options 
+				# App.execute "show:loading", view, options 
 			else
 				# we could use @region.show view instead
 				options.region.show view

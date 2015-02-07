@@ -1,4 +1,3 @@
 @Payrollsio.module "Views", (Views, App, Backbone, Marionette, $, _) ->
 
-	class Views.CollectionView extends Marionette.CollectionView
-		childViewEventPrefix: "childview"
+	class Views.CompositeView extends Marionette.CompositeView

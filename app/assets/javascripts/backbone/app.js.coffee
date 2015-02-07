@@ -2,9 +2,9 @@
 
 	App = new Marionette.Application
 
-	# App.on "before:start", (options) ->
-	# 	App.environment = options.environment
-		# App.navs = App.request "nav:entities"
+	App.on "before:start", (options) ->
+		# App.environment = options.environment
+		App.navs = App.request "nav:entities"
 
 	# App.rootRoute = Routes.crew_index_path()
 
@@ -15,8 +15,8 @@
 		mainRegion:		"#main-region"
 		footerRegion:	"#footer-region"
 
-	# App.addInitializer ->
-	# 	App.module("HeaderApp").start(App.navs)
+	App.addInitializer ->
+		App.module("HeaderApp").start(App.navs)
 		# App.module("FooterApp").start()
 
 	# navs is now accecible in listController as an option

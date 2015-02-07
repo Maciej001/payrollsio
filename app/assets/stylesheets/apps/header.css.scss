@@ -1,0 +1,33 @@
+// fonts
+#header-region, .contain-to-grid, .top-bar, .top-bar-section ul li {
+	height: 60px;
+	background-color: $blue;
+		#{headings()} {
+			color: 		white;
+		}
+	ul, li, a, h3 {
+		height: 60px;
+		line-height: 60px;
+	}
+}
+
+.top-bar-section li:not(.has-form) a:not(.button) {
+	background-color: $blue;
+	&:hover {
+		background: $blue;
+	}
+}
+.top-bar-section ul li {
+	color: white;
+	&:hover {
+		cursor: pointer;
+	}
+	span, icon .fi {
+		font-size: 1rem;
+	}
+}
+h3 {
+	font-size: 1.5rem;
+	margin: 0;
+	padding: 0;
+}
