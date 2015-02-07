@@ -1,0 +1,11 @@
+#footer-region			{  
+	height: $pushHeight; 
+	background-color: $green; 
+	text-align: center; 
+	padding-top: 17px; 
+	border-top: 1px solid darken($green,10%);  
+	
+	h5.subheader {
+		color: white;
+	}
+}

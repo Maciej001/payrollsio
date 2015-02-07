@@ -17,7 +17,7 @@
 
 	App.addInitializer ->
 		App.module("HeaderApp").start(App.navs)
-		# App.module("FooterApp").start()
+		App.module("FooterApp").start()
 
 	# navs is now accecible in listController as an option
 	# App.vent.on "nav:choose", (nav) ->
