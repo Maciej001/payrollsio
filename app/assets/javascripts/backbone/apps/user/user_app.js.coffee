@@ -6,24 +6,15 @@
 			new UserApp.Show.Controller
 				region: App.userRegion
 
-		login: ->
-			new UserApp.Signin.Controller
-
-		logout: ->
-			console.log "logoutujemy"
-
 		signup: ->
-			new UserApp.Signup.Controller
-				region: App.formRegion
+			new UserApp.Signup.Controller 
 
 	UserApp.on "start", ->
 		API.show()
 
-	App.commands.setHandler "user:signin", ->
-		API.login()
-
-	App.commands.setHandler "user:signup", ->
+	App.vent.on "user:signup", ->
 		API.signup()
 
-	App.commands.setHandler "user:logout", ->
-		APP.logout()
+
+
+

@@ -27,3 +27,6 @@
 
 		getStatsView: ->
 			new Show.Stats
+
+
+

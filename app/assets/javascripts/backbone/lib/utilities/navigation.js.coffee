@@ -13,3 +13,24 @@
 		startHistory: ->
 			if Backbone.history
 				Backbone.history.start()	
+
+		addWhiteOverlay: ->
+			docHeight = $(document).height()
+
+			$("body")
+				.append("<div id='overlay'></div>")
+
+			$("#overlay")
+				.height(docHeight)
+				.hide()
+				.fadeTo(300, 0.7)
+				.css
+					'position': 'absolute'
+					'top': 0
+					'left': 0
+					'background-color': 'white'
+					'width': '100%'
+					'z-index': 5000
+
+			removeWhiteOverlay: ->
+				$("#overlay").remove()

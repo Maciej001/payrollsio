@@ -7,11 +7,12 @@
 
 			signupView = @getSignupView user
 
-			@show signupView
+			App.addWhiteOverlay()
 
-			@listenTo signupView, "childview:create:new:user", ->
-				console.log "request creating new user"
+			# @show signupView
 
 		getSignupView: (user) ->
 			new Signup.User
 				model: user
+
+

@@ -5,3 +5,4 @@
 
 		triggers: 
 			"submit form" : "create:new:user"
+ 

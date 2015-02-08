@@ -10,24 +10,11 @@
 			@listView = @getListView navs
 			@show @listView
 
-			@listenTo @listView, "login:button:clicked", ->
-				@loginUser()
-
-
-			@listenTo @listView, "logout:button:clicked", ->
-				@logoutUser()
-
 			@listenTo @listView, "signup:button:clicked", ->
 				@signupUser()
 
-		loginUser: ->
-			App.execute "user:signin"
-
-		logoutUser: ->
-			App.execute "user:logout"
-
 		signupUser: ->
-			App.execute "user:signup"
+			App.vent.trigger "user:signup"
 
 		getListView: (navs) ->
 			new List.Header	
