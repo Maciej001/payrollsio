@@ -2,8 +2,6 @@
 	
 	class Entities.Nav extends App.Entities.Model
 
-		isDivider: -> @get("divider")
-
 		choose: ->
 			# sets the attribute on the model. Later you can bind events 
 			# change:chosen
@@ -29,8 +27,20 @@
 	API = 
 		getNavs: ->
 			navs = new Entities.NavsCollection [
-				{ name: "Hi, Maciej", 		url: "#", 	icon: "fi fi-torso" }
-			]  
+				{ name: "Log in", 	id: "login",	url: "#", icon: "fi fi-power" }
+				{ name: "Sign up",	id: "signup",	url: "#", icon: "fi fi-skull" }
+			]
+
+		getNavsAuthenticated: ->
+			navs = new Entities.NavsCollection [
+				{ name: "Log in", 	id: "login",	url: "#", icon: "fi fi-power" }
+				{ name: "Sign up",	id: "singup",	url: "#", icon: "fi fi-skull" }
+			]
+
+		getNavsUnauthenticated: ->
+			navs = new Entities.NavsCollection [
+				{ name: "Log out", 	id: "logout",	url: "#", icon: "fi fi-power" }
+			]
 
 	App.reqres.setHandler "nav:entities", ->
 		API.getNavs()

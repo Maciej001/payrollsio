@@ -6,5 +6,24 @@
 		show: ->
 			new MarketApp.Show.Controller
 
+		login: ->
+			console.log "logujemy"
+
+		logout: ->
+			console.log "logoutujemy"
+
+		signup: ->
+			console.log "nowy userek"
+
 	MarketApp.on "start", ->
 		API.show()
+
+	App.commands.setHandler "user:signin", ->
+		API.login()
+		
+
+	App.commands.setHandler "user:signup", ->
+		API.signup()
+
+	App.commands.setHandler "user:logout", ->
+		APP.logout()

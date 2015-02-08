@@ -3,9 +3,6 @@
 	class List.Nav extends App.Views.ItemView 
 		tagName:	"li"
 
-		# modelEvents:
-		# 	"change:chosen"	: "changeChosen"
-
 		getTemplate: ->
 			"header/list/_nav"
 
@@ -13,3 +10,8 @@
 		template: 					"header/list/header"
 		childView:					List.Nav
 		childViewContainer:	"#nav-links"
+
+		triggers: 
+			"click #login": 	"login:button:clicked"
+			"click #logout": 	"logout:button:clicked"
+			"click #signup": 	"signup:button:clicked"

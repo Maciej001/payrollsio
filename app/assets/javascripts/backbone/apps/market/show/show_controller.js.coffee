@@ -11,6 +11,7 @@
 				@rtmarketRegion()
 				@chartRegion()
 				@sessionRegion()
+			
  
 			@show @layoutView
 

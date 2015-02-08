@@ -1,9 +1,10 @@
 // fonts
 body, #{headings()}, p, li, a, i { color: white;}
+
 #header-region, .contain-to-grid, .top-bar, .top-bar-section ul li {
 	height: 60px;
 	background-color: $blue;
-		#{headings()},li,a,span,icon,p {
+		#{headings()},li,a,span,i,p {
 			color: 		white;
 		}
 	ul, li, a, h3 {
@@ -23,9 +24,9 @@ body, #{headings()}, p, li, a, i { color: white;}
 	&:hover {
 		cursor: pointer;
 	}
-	span, i {
-		font-size: 1rem;
-	}
+	span { font-size: 1rem;	}
+	i { font-size: 1.4rem;}
+
 }
 h3 {
 	font-size: 1.5rem;
