@@ -3,8 +3,27 @@
 	class Show.Controller extends App.Controllers.Application
 
 		initialize: (options) ->
-			showView = @getShowView() 
-			@show showView
+			@userLayoutView = @getUserLayoutView() 
 
-		getShowView: ->
-			new Show.User
+			@listenTo @userLayoutView, "show", =>
+				@userActionsRegion()
+				@userStatsRegion()
+
+			@show @userLayoutView
+
+		getUserLayoutView: ->
+			new Show.UserLayout
+
+		userActionsRegion: ->
+			actionsView = @getActionsView()
+			@show actionsView, region: @userLayoutView.userActionsRegion
+
+		userStatsRegion: ->
+			statsView = @getStatsView()
+			@show statsView, region: @userLayoutView.userStatsRegion
+
+		getActionsView: ->
+			new Show.Actions 
+
+		getStatsView: ->
+			new Show.Stats

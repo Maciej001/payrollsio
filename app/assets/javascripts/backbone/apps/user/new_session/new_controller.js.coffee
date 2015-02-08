@@ -1,11 +1,9 @@
-@Payrollsio.module "MarketApp.Signin", (Signin, App, Backbone, Marionette, $, _) ->
+@Payrollsio.module "UserApp.Signin", (Signin, App, Backbone, Marionette, $, _) ->
 	
 	class Signin.Controller extends App.Controllers.Application
 
 		initialize: (options) ->
 			signinView = @getSigninView() 
-
-
 
 			@show signinView
 

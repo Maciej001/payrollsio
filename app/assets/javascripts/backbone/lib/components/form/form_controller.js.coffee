@@ -1,11 +1,20 @@
 @Payrollsio.module "Components.Form", (Form, App, Backbone, Marionette, $, _) ->
-	# options contain view and config(options)
+
+	# form controller is initialized with passed option object that gets
+	# view and config(options)
 	class Form.Controller extends App.Controllers.Application
 
 		initialize: (options = {}) ->
 			@contentView = options.view
+
+			# at this point options.config was not passed
 			@formLayout = @getFormLayout options.config
 
+			# @formLayout.on "show", =>
+			# 	@formContentRegion()
+			# instead we can write 
+			# when we use listenTo, listeners are removed when controller
+			# closes down
 			@listenTo @formLayout, "show", @formContentRegion
 			@listenTo @formLayout, "form:submit", @formSubmit 
 			@listenTo @formLayout, "form:cancel", @formCancel
@@ -15,11 +24,12 @@
 			@contentView.triggerMethod "form:cancel"
 
 		formSubmit: ->
-			# syphone serializes data from form
+			# backbone.syphone takes the formLayout and returns
+			# JSON object with all data serialized
 			data = Backbone.Syphon.serialize @formLayout
 
 			# first check data and than save it
-			# trigger "form:submit" event and ask
+			# trigger "form:submit" event on our editView and ask
 			# if it's ok to update the model
 			if @contentView.triggerMethod("form:submit", data) isnt false  
 				model = @contentView.model
@@ -93,6 +103,7 @@
 		# parameters in the object and pass it to controller
 		# Since we create new Controller we have to implement
 		# initialize function above     
+		console.log "info dotarlo"
 		formController = new Form.Controller
 			view: contentView
 			config: options

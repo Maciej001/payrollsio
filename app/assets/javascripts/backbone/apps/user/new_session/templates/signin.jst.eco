@@ -1,0 +1,37 @@
+<div id="signin-user">
+  <fieldset>
+    
+    <legend>Sign in</legend>
+    
+    <div class="row">
+      <div id="email_group" class="control-group">
+        <div class="large-3 columns">
+          <label class="right inline" for="email">Email</label>
+        </div>
+        <div class="large-9 columns">
+          <div class="large-5">
+            <input id="email" type="email" name="email" class="large-2"/>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="row">
+      <div id="password_group" class="control-group"></div>
+        <div class="large-3 columns">
+          <label class="right inline" for="password">Password</label>
+        </div>
+        <div class="large-9 columns">
+          <div class="large-5">
+            <input id="password" type="password" name="password"/>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="form-actions">
+      <input type="submit" value="Login" class="button btn-yellow"/>
+    </div>
+
+  </fieldset>
+</div>

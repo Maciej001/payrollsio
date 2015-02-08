@@ -19,7 +19,7 @@
 			array = []
 			array.push {
 				type:"cancel" 
-				className: "button small secondary radius"
+				className: "button small secondary"
 				text: buttons.cancel
 			} if buttons.cancel
 			array.push {
