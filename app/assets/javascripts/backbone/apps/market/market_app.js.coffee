@@ -7,7 +7,7 @@
 			new MarketApp.Show.Controller
 
 		login: ->
-			console.log "logujemy"
+			new MarketApp.Signin.Controller
 
 		logout: ->
 			console.log "logoutujemy"
@@ -20,7 +20,7 @@
 
 	App.commands.setHandler "user:signin", ->
 		API.login()
-		
+
 
 	App.commands.setHandler "user:signup", ->
 		API.signup()
