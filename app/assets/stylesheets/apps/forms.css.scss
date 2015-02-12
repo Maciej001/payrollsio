@@ -1,11 +1,46 @@
 #form-region {
 	position: absolute;
-	top: 			300px;
-	left: 		500px;
+	top: 			50%;
+	left: 		50%;
 	width: 		400px;
+	transform: translate(-50%, -50%);
 	z-index: 	5001;
 	background: white;
 	@include border-radius(5px);
 }
 
+#form-content-region {
+	margin-bottom: 5px;
+}
 
+form {
+	padding: 20px;
+}
+
+.form-header {
+	display: inline-block;
+	padding-bottom: 20px;
+	font-size: 1.6rem;
+	font-weight: normal;
+}
+
+.panel {
+	background: white;
+	border: none;
+}
+
+fieldset {
+	border: none;
+	padding: 0;
+	margin-top: 0;
+
+	.columns {
+		padding: 0;
+	}
+
+	input {
+		display: inline-block;
+		margin-left: 20px;
+	}
+
+}

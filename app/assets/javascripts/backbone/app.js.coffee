@@ -3,7 +3,7 @@
 	App = new Marionette.Application
 
 	App.entitiesBus = Backbone.Radio.channel('entities')
-	App.mainBus = Backbone.Radio.channel('mainBus')
+	App.mainBus = Backbone.Radio.channel('main')
 
 	App.on "before:start", (options) ->
 		# App.environment = options.environment

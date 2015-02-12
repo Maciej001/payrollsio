@@ -2,9 +2,15 @@
 	
 	class Signup.User extends App.Views.ItemView 
 		template: "user/new_registration/signup"
+
+		form:
+			footer: true
+			buttons: 
+				primary: 		"Sign up"
+				cancel: 		"Cancel"
+				placement: 	"left"
 		
-		triggers: 
-			"submit form" : "create:new:user"
+
 
 		
  

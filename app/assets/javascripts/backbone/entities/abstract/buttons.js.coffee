@@ -19,12 +19,12 @@
 			array = []
 			array.push {
 				type:"cancel" 
-				className: "button small secondary"
+				className: "button small secondary radius"
 				text: buttons.cancel
 			} if buttons.cancel
 			array.push {
 				type:"primary" 
-				className: "button small radius"
+				className: "button small radius btn-yellow"
 				buttonType: "submit"
 				text: buttons.primary
 			} if buttons.primary
@@ -44,7 +44,6 @@
 				placemenet:	"right"
 
 	App.entitiesBus.reply "form:button:entities", (buttons = {}, model) ->
-		console.log buttons, model
 		API.getFormButtons buttons, model
 
 

@@ -1,10 +1,9 @@
 @Payrollsio.module "Components.Form", (Form, App, Backbone, Marionette, $, _) ->
 
-	# form controller is initialized with passed option object that gets
-	# view and config(options)
 	class Form.Controller extends App.Controllers.Application
 
 		initialize: (options = {}) ->
+			console.log options
 			@contentView = options.view
 
 			# at this point options.config was not passed
@@ -94,10 +93,9 @@
 												# form_view.js.coffee
 
 		getButtons: (buttons = {}) ->
-			App.entitiesBus("form:button:entities", buttons, @contentView.model) unless buttons is false
+			App.entitiesBus.request("form:button:entities", buttons, @contentView.model) unless buttons is false
 	
-
-	App.replyd "form:wrapper", (contentView, options = {}) ->
+	App.mainBus.reply "form:wrapper", (contentView, options = {}) ->
 		throw new Error "No model found inside of form's contentView" unless contentView.model
 		# Controller takes only one argument so we have wrap our 
 		# parameters in the object and pass it to controller
@@ -109,6 +107,7 @@
 			config: options
 
 		formController.formLayout 
+
 
 
 
