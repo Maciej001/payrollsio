@@ -3,13 +3,13 @@
 	class Signup.Controller extends App.Controllers.Application
 
 		initialize: (options) ->
-			user = App.request "new:user:entity"
+			user = App.entitiesBus.request "new:user:entity"
 
 			signupView = @getSignupView user
 
-			App.addWhiteOverlay()
+			App.addBlackOverlay()
 
-			# @show signupView
+			@show signupView, region: @formRegion
 
 		getSignupView: (user) ->
 			new Signup.User

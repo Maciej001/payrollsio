@@ -16,6 +16,8 @@
 //= require underscore
 //= require backbone 
 //= require marionette
+//= require backbone.radio
+//= require radio.shim
 //= require foundation
 //= require js-routes
 //= require syphon

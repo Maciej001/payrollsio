@@ -14,7 +14,7 @@
 				@signupUser()
 
 		signupUser: ->
-			App.vent.trigger "user:signup"
+			App.mainBus.trigger "user:signup"
 
 		getListView: (navs) ->
 			new List.Header	

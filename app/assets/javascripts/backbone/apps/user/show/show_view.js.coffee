@@ -6,7 +6,6 @@
 		regions:
 			userActionsRegion: 	"#user-actions-region"
 			userStatsRegion: 		"#user-stats-region"
-			formRegion: 				"#form-region"
 
 	class Show.Actions extends App.Views.ItemView
 		template: "user/show/_user_actions"

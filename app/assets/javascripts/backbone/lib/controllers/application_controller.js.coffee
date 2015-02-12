@@ -9,7 +9,7 @@
 			# Region is extracted form options if it was passed when
 			# controller was constructed. Otherwise it uses defaul region
 
-			@region = options.region or App.request "default:region"
+			@region = options.region or App.mainBus.request "default:region"
 			super options
 
 		# arguments passed to destroy will be automatically passed 

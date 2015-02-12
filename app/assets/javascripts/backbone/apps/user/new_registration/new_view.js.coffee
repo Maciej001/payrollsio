@@ -2,7 +2,9 @@
 	
 	class Signup.User extends App.Views.ItemView 
 		template: "user/new_registration/signup"
-
+		
 		triggers: 
 			"submit form" : "create:new:user"
+
+		
  

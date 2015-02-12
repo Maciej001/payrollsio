@@ -43,8 +43,10 @@
 				cancel:			"Cancel"
 				placemenet:	"right"
 
-	App.reqres.setHandler "form:button:entities", (buttons = {}, model) ->
+	App.entitiesBus.reply "form:button:entities", (buttons = {}, model) ->
+		console.log buttons, model
 		API.getFormButtons buttons, model
+
 
 
 

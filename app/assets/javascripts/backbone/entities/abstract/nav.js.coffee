@@ -42,6 +42,6 @@
 				{ name: "Log out", 	id: "logout",	url: "#", icon: "fi fi-power" }
 			]
 
-	App.reqres.setHandler "nav:entities", ->
+	App.entitiesBus.reply "nav:entities", ->
 		API.getNavs()
 

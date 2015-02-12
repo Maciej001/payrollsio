@@ -94,16 +94,16 @@
 												# form_view.js.coffee
 
 		getButtons: (buttons = {}) ->
-			App.request("form:button:entities", buttons, @contentView.model) unless buttons is false
+			App.entitiesBus("form:button:entities", buttons, @contentView.model) unless buttons is false
 	
 
-	App.reqres.setHandler "form:wrapper", (contentView, options = {}) ->
+	App.replyd "form:wrapper", (contentView, options = {}) ->
 		throw new Error "No model found inside of form's contentView" unless contentView.model
 		# Controller takes only one argument so we have wrap our 
 		# parameters in the object and pass it to controller
 		# Since we create new Controller we have to implement
 		# initialize function above     
-		console.log "info dotarlo"
+
 		formController = new Form.Controller
 			view: contentView
 			config: options

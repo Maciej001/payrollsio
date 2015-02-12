@@ -3,5 +3,4 @@
 			<div id="user-actions-region" class="large-6 columns"></div>
 			<div id="user-stats-region" class="large-6 columns"></div>
 	</div>
-	<div id="form-region" class="large-12 columns"></div>
 </div>

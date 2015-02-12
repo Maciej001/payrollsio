@@ -26,11 +26,11 @@
 		newUser: ->
 			new Entities.User
 
-	App.reqres.setHandler "users:entities", ->
+	App.entitiesBus.reply "users:entities", ->
 		API.getUsers()
 
-	App.reqres.setHandler "user:entity", (id) ->
+	App.entitiesBus.reply "user:entity", (id) ->
 		API.getUser id
 
-	App.reqres.setHandler "new:user:entity", ->
+	App.entitiesBus.reply "new:user:entity", ->
 		API.newUser()

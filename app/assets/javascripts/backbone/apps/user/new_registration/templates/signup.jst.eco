@@ -29,7 +29,7 @@
       </div>
     </div>
 
-    <div class="row">
+<!--     <div class="row">
       <div id="password_confirmation_group" class="control-group"></div>
         <div class="large-3 columns">
           <label class="right inline" for="login_user_password_confirmation">Confirm Password</label>
@@ -40,7 +40,7 @@
           </div>
         </div>
       </div>
-    </div>
+    </div> -->
     
     <div class="form-actions">
       <input type="submit" value="Login" class="button btn-yellow"/>

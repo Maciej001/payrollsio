@@ -1,6 +1,6 @@
 @Payrollsio.module "Utilities", (Utilities, App, Backbone, Marionette, $, _) ->
 	
-	App.commands.setHandler "when:fetched", (entities, callback) ->
+	App.mainBus.comply "when:fetched", (entities, callback) ->
 		# calls the callback function when entities are fetched from server
 
 		xhrs = []
@@ -13,3 +13,25 @@
 
 		$.when(xhrs...).done ->
 			callback()
+
+	_.extend App,
+		addBlackOverlay: ->
+			docHeight = $(document).height()
+
+			$("body")
+				.append("<div id='overlay'></div>")
+
+			$("#overlay")
+				.height(docHeight)
+				.hide()
+				.fadeTo(300, 0.7)
+				.css
+					'position': 'absolute'
+					'top': 0
+					'left': 0
+					'background-color': 'black'
+					'width': '100%'
+					'z-index': 5000
+
+		removeWhiteOverlay: ->
+			$("#overlay").remove()

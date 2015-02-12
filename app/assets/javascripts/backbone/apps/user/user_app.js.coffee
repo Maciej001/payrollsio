@@ -8,11 +8,12 @@
 
 		signup: ->
 			new UserApp.Signup.Controller 
+				region: App.formRegion
 
 	UserApp.on "start", ->
 		API.show()
 
-	App.vent.on "user:signup", ->
+	App.mainBus.on "user:signup", ->
 		API.signup()
 
 
