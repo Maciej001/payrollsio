@@ -14,12 +14,12 @@ do (Backbone) ->
 	_sync = Backbone.sync
 
 	# method - eg. "read" is returned when 'fetch' method is called
-	# entity - is model or collection, in our case Crew
+	# entity - is model or collection
 	# Object - options passed to sync - success and error callbacks
 	Backbone.sync = (method, entity, options = {}) ->
 
 		# Backbone.sync uses jQuery.ajax function so we can use 
-		# it's beforeSend pre-request callback function to modify object
+		# its beforeSend pre-request callback function to modify object
 		# before it is sent. 
 		# _.bind binds function to the model, so in the function 'this'
 		# will always point to the model in this case 'entity'

@@ -34,8 +34,7 @@
 				model = @contentView.model
 				collection = @contentView.collection
 
-				model.attributes = data
-				console.log "uderzamy w adresik", model.url
+				# model.attributes = data
 				@processFormSubmit data, model, collection
 
 		processFormSubmit: (data, model, collection) ->

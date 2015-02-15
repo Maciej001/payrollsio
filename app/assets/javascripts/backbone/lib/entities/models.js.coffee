@@ -39,11 +39,13 @@
 				# _.bind binds function to an object and passes arguments
 				success: 	_.bind(@saveSuccess, @, isNew, options.collection)
 				error:		_.bind(@saveError, @)
+				headers: 
+					'X-CSRF-Token': App.csrfToken
+
+			console.log "options: ", options
 
 			# remove _errors attribute set below in saveError function
 			@unset "_errors"
-
-			console.log "dane do zachowania", data
 
 			super data, options
 
@@ -74,7 +76,7 @@
 				@trigger "updated", @
 
 		saveError: (model, xhr, options = {}) ->
-			console.log "nie udalo sie zachowac danych"
+			console.log "nie udalo sie zachowac danych", xhr
 			# We are not passing any arguments so it will recieve default 
 			# arguments model, response, options
 			#
@@ -82,8 +84,6 @@
 			# "change:_errors" is triggered and we can catch it in FormWrapper
 			# view. Instead we could just trigger an event and catch it elsewhere
 			@set _errors: xhr.responseJSON?.errors unless xhr.status is 500 or xhr.status is 404
-
-			console.log model._errors
 
 			false
 

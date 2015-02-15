@@ -35,3 +35,6 @@
 
 		removeBlackOverlay: ->
 			$("#overlay").remove()
+
+	App.mainBus.reply "save:token", ->
+		App.csrfToken = $("meta[name='csrf-token']").attr('content')

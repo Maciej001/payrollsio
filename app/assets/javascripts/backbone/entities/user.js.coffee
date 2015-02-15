@@ -6,8 +6,8 @@
 		model: 	Entities.User
 
 	class Entities.UserRegistration extends App.Entities.Model
-		url: 'users/sing_up.json'
-
+		# url: Routes.user_registration_path()
+		url: "users.json"
 		defaults:
 			"email": ""
 			"password": ""
