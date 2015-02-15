@@ -25,19 +25,22 @@
 		# When model is saved collection can be passed in options
 		# so you can then update it.
 		save: (data, options = {}) ->
-			console.log "Information from model.save method."
-			console.log "Model is being saved with data: ", data, @model
 			isNew = @isNew()
 
 			_.defaults options,
 				wait: true
-
+				isNew: isNew
 				# save method accepts 'success' and 'error' callback functions 
 				# in the options hash which will be passed the 
 				# arguments(model, response, options).
 				# _.bind(function, object, arguments)
 				# _.bind binds function to an object and passes arguments
-				success: 	_.bind(@saveSuccess, @, isNew, options.collection)
+
+				# success: 	_.bind(@saveSuccess, @, isNew, options.collection)
+
+				success: (model, response, options) =>
+					@saveSuccess model, response, options
+
 				error:		_.bind(@saveError, @)
 
 			# remove _errors attribute set below in saveError function
@@ -45,9 +48,10 @@
 
 			super data, options
 
+		saveSuccess: (model, response, options={}) =>
+			isNew = options.isNew
+			collection = options.collection
 
-		saveSuccess: (isNew, collection) ->
-			console.log "udalo sie save"
 			# Model will trigger events that will be available for other views
 			# and can act upon them
 			# Eg.: our edit view should update name of the crew member
@@ -59,9 +63,7 @@
 				# about adding model to the collection
 				collection.trigger "model:created", @ if collection
 
-				# model is being created
-				console.log "event 'created' triggered "
-				@trigger "created", @
+				@trigger "created", @, response
 			else
 				# if collection was passed use: collection
 				# if not use @collection property that is already on that model
@@ -72,7 +74,6 @@
 				@trigger "updated", @
 
 		saveError: (model, xhr, options = {}) ->
-			console.log "nie udalo sie zachowac danych", xhr
 			# We are not passing any arguments so it will recieve default 
 			# arguments model, response, options
 			#

@@ -11,7 +11,9 @@
 			@listenTo @signupView, "form:cancel", ->
 				App.mainBus.trigger "signup:cancel"
 
-			@listenTo @signupView, "form:submit", (data) ->
+			@listenTo @signupView.model, "created",  (model, response) ->
+				# create currentUser
+				App.entitiesBus.trigger "create:current:user", response
 
 			@formView = App.mainBus.request "form:wrapper", @signupView
 
@@ -23,6 +25,7 @@
 
 		onBeforeDestroy: ->
 			@formView.destroy()
+
 
 
 

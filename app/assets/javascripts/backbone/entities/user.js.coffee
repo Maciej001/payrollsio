@@ -46,6 +46,11 @@
 		newUserRegistration: ->
 			new Entities.UserRegistration
 
+		createCurrentUser: (response) ->
+
+			App.currentUser = new Entities.User response
+			console.log "ajebisty nowy user", App.currentUser
+
 	App.entitiesBus.reply "users:entities", ->
 		API.getUsers()
 
@@ -57,3 +62,6 @@
 
 	App.entitiesBus.reply "new:user:registration", ->
 		API.newUserRegistration()
+
+	App.entitiesBus.on "create:current:user", (response) ->
+		API.createCurrentUser response
