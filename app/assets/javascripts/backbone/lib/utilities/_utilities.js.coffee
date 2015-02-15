@@ -33,5 +33,5 @@
 					'width': '100%'
 					'z-index': 5000
 
-		removeWhiteOverlay: ->
+		removeBlackOverlay: ->
 			$("#overlay").remove()

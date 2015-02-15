@@ -1,14 +1,30 @@
 @Payrollsio.module "Entities", (Entities, App, Backbone, Marionette, $, _) ->
 
 	class Entities.User extends App.Entities.Model
-		# we need a route cause it being fetched by itself without going
-		# through the collection
-		# Backbone knows what to get depending if the request has id or not
-
 
 	class Entities.UsersCollection extends App.Entities.Collection
 		model: 	Entities.User
 
+	class Entities.UserRegistration extends App.Entities.Model
+		url: 'users/sing_up.json'
+
+		defaults:
+			"email": ""
+			"password": ""
+			"password_confirmation": ""
+
+	class Entities.UserSession extends App.Entities.Model
+		url: Routes.user_session_path()
+
+		defaults:
+			"email": ""
+			"password": ""
+
+	class Entities.UserPasswordRecovery extends App.Entities.Model
+		url: Routes.user_password_path()
+
+		defaults: 
+			email: ""
 
 	API = 
 		getUsers: ->
@@ -26,6 +42,9 @@
 		newUser: ->
 			new Entities.User
 
+		newUserRegistration: ->
+			new Entities.UserRegistration
+
 	App.entitiesBus.reply "users:entities", ->
 		API.getUsers()
 
@@ -34,3 +53,6 @@
 
 	App.entitiesBus.reply "new:user:entity", ->
 		API.newUser()
+
+	App.entitiesBus.reply "new:user:registration", ->
+		API.newUserRegistration()

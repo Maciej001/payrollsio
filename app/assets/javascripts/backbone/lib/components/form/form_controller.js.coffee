@@ -3,7 +3,6 @@
 	class Form.Controller extends App.Controllers.Application
 
 		initialize: (options = {}) ->
-			console.log options
 			@contentView = options.view
 
 			# at this point options.config was not passed
@@ -25,7 +24,8 @@
 		formSubmit: ->
 			# backbone.syphone takes the formLayout and returns
 			# JSON object with all data serialized
-			data = Backbone.Syphon.serialize @formLayout
+
+			data = Backbone.Syphon.serialize @formLayout 
 
 			# first check data and than save it
 			# trigger "form:submit" event on our editView and ask
@@ -33,6 +33,9 @@
 			if @contentView.triggerMethod("form:submit", data) isnt false  
 				model = @contentView.model
 				collection = @contentView.collection
+
+				model.attributes = data
+				console.log "uderzamy w adresik", model.url
 				@processFormSubmit data, model, collection
 
 		processFormSubmit: (data, model, collection) ->
@@ -42,9 +45,6 @@
 			# Let's implement it in our entities/_base/models.js.coffee
 			model.save data,  
 				collection: collection # updated save method of model
-
-		onDestroy: ->
-			console.log "onClose", @
 
 		formContentRegion: ->
 			# assign @region so our controlle show action works properly 

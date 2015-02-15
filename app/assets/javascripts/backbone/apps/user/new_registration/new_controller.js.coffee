@@ -4,18 +4,28 @@
 
 		initialize: (options) ->
 			formRegion = options.region
-			user = App.entitiesBus.request "new:user:entity"
+			user = App.entitiesBus.request "new:user:registration"
 
-			signupView = @getSignupView user
+			@signupView = @getSignupView user
 
-			App.addBlackOverlay()
+			console.log "jaki mamy model w signup controller", @signupView.model
 
-			formView = App.mainBus.request "form:wrapper", signupView
+			@listenTo @signupView, "form:cancel", ->
+				App.mainBus.trigger "signup:cancel"
 
-			@show formView, region: formRegion
+			@listenTo @signupView, "form:submit", (data) ->
+
+
+			@formView = App.mainBus.request "form:wrapper", @signupView
+
+			@show @formView, region: formRegion
 
 		getSignupView: (user) ->
 			new Signup.User
 				model: user
+
+		onBeforeDestroy: ->
+			@formView.destroy()
+
 
 

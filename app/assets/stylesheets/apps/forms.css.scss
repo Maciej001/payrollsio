@@ -7,10 +7,20 @@
 	z-index: 	5001;
 	background: white;
 	@include border-radius(5px);
-}
 
-#form-content-region {
-	margin-bottom: 5px;
+	label {
+		margin-bottom: 0;
+		padding-bottom: 0;
+		width: 100%;
+	}
+
+	input {
+		width: 100%;
+	}
+
+	.inline-list {
+		padding: 10px 10px 0 0;
+	}
 }
 
 form {
@@ -19,7 +29,7 @@ form {
 
 .form-header {
 	display: inline-block;
-	padding-bottom: 20px;
+	padding-bottom: 10px;
 	font-size: 1.6rem;
 	font-weight: normal;
 }
@@ -29,18 +39,5 @@ form {
 	border: none;
 }
 
-fieldset {
-	border: none;
-	padding: 0;
-	margin-top: 0;
 
-	.columns {
-		padding: 0;
-	}
 
-	input {
-		display: inline-block;
-		margin-left: 20px;
-	}
-
-}

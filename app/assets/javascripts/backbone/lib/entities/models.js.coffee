@@ -25,7 +25,8 @@
 		# When model is saved collection can be passed in options
 		# so you can then update it.
 		save: (data, options = {}) ->
-			console.log "Model is being saved with data: ", data
+			console.log "Information from model.save method."
+			console.log "Model is being saved with data: ", data, @model
 			isNew = @isNew()
 
 			_.defaults options,
@@ -42,10 +43,13 @@
 			# remove _errors attribute set below in saveError function
 			@unset "_errors"
 
+			console.log "dane do zachowania", data
+
 			super data, options
 
 
 		saveSuccess: (isNew, collection) ->
+			console.log "udalo sie save"
 			# Model will trigger events that will be available for other views
 			# and can act upon them
 			# Eg.: our edit view should update name of the crew member
@@ -70,6 +74,7 @@
 				@trigger "updated", @
 
 		saveError: (model, xhr, options = {}) ->
+			console.log "nie udalo sie zachowac danych"
 			# We are not passing any arguments so it will recieve default 
 			# arguments model, response, options
 			#
@@ -77,6 +82,10 @@
 			# "change:_errors" is triggered and we can catch it in FormWrapper
 			# view. Instead we could just trigger an event and catch it elsewhere
 			@set _errors: xhr.responseJSON?.errors unless xhr.status is 500 or xhr.status is 404
+
+			console.log model._errors
+
+			false
 
 			# don'f forget to unset before next submit of the form. On submit all 
 			# error messages should disapear from the form. 

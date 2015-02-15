@@ -1,40 +1,29 @@
 <div id="signup-user">
-  <fieldset>
     
     <h2 class="form-header">Sign up</h2>
     
     <div class="row">
-      <div id="email_group" class="control-group">
-        <div class="large-3 small-3 columns">
-          <label class="left inline" for="email">Email</label>
-        </div>
-        <div class="large-9 small-9 columns">
-          <input id="email" type="email" name="email" class="large-2"/>
-        </div>
+      <div id="email_group" class="control-group large-12 small-12 columns">
+          <label class="left inline" for="email">Email
+            <input id="email" type="email" name="email"/>
+          </label>
       </div>
     </div>
     
     <div class="row">
-      <div id="password_group" class="control-group"></div>
-        <div class="large-3 small-3 columns">
-          <label class="left inline" for="login_user_password">Password</label>
-        </div>
-        <div class="large-9 small-9 columns">
-          <input id="password" type="password" name="password"/>
-        </div>
+      <div id="password_group" class="control-group large-12 small-12 columns">
+          <label class="left inline" for="login_user_password">Password
+            <input id="password" type="password" name="password"/>
+          </label>
       </div>
     </div>
 
     <div class="row">
-      <div id="password_confirmation_group" class="control-group"></div>
-        <div class="large-3 small-3 columns">
-          <label class="left inline" for="login_user_password_confirmation">Confirm</label>
-        </div>
-        <div class="large-9 small-9 columns">
-          <input id="password_confirmation" type="password" name="password_confirmation"/>
-        </div>
+      <div id="password_group" class="control-group large-12 small-12 columns">
+          <label class="left inline" for="login_user_password">Confirmation
+            <input id="password_confirmation" type="password" name="password_confirmation"/>
+          </label>
       </div>
     </div>
 
-  </fieldset>
 </div>

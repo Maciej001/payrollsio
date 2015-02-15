@@ -1,21 +1,21 @@
 class UserController < ActionController::Base
 	respond_to :json
 
-	before_action :authenticate_user!, only: [:update]
+	before_action :authenticate_user!
 
   def show
 		@user = User.find params[:id]
 	end
 
-	def create
-		@user = User.new new_user_params
+	# def create
+	# 	@user = User.new new_user_params
 
-		if @member.save
-			render 'user/show'
-		else 
-			respond_with @user
-		end
-	end
+	# 	if @member.save
+	# 		render 'user/show'
+	# 	else 
+	# 		respond_with @user
+	# 	end
+	# end
 
 	private 
 
