@@ -29,8 +29,6 @@
 	App.on "start", (options) ->
 		@startHistory()
 		@navigate(@rootRoute, trigger: true) unless @getCurrentRoute()
-		App.mainBus.request "save:token"
-		console.log "token: ", App.csrfToken
 
 	App.mainBus.reply "default:region", App.marketRegion 
 

@@ -8,6 +8,7 @@
 	class Entities.UserRegistration extends App.Entities.Model
 		# url: Routes.user_registration_path()
 		url: "users.json"
+		paramRoot: "user"
 		defaults:
 			"email": ""
 			"password": ""

@@ -18,6 +18,7 @@
 //= require marionette
 //= require backbone.radio
 //= require radio.shim
+//= require backbone.sync.rails
 //= require foundation
 //= require js-routes
 //= require syphon

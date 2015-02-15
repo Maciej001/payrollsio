@@ -33,8 +33,6 @@
 			if @contentView.triggerMethod("form:submit", data) isnt false  
 				model = @contentView.model
 				collection = @contentView.collection
-
-				# model.attributes = data
 				@processFormSubmit data, model, collection
 
 		processFormSubmit: (data, model, collection) ->

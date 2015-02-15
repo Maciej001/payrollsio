@@ -39,10 +39,6 @@
 				# _.bind binds function to an object and passes arguments
 				success: 	_.bind(@saveSuccess, @, isNew, options.collection)
 				error:		_.bind(@saveError, @)
-				headers: 
-					'X-CSRF-Token': App.csrfToken
-
-			console.log "options: ", options
 
 			# remove _errors attribute set below in saveError function
 			@unset "_errors"

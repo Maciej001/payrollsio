@@ -5,7 +5,6 @@
 		initialize: (options) ->
 			formRegion = options.region
 			user = App.entitiesBus.request "new:user:registration"
-			console.info "new user: ", user.url
 
 			@signupView = @getSignupView user
 
@@ -13,7 +12,6 @@
 				App.mainBus.trigger "signup:cancel"
 
 			@listenTo @signupView, "form:submit", (data) ->
-
 
 			@formView = App.mainBus.request "form:wrapper", @signupView
 

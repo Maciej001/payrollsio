@@ -23,10 +23,16 @@ do (Backbone) ->
 		# before it is sent. 
 		# _.bind binds function to the model, so in the function 'this'
 		# will always point to the model in this case 'entity'
+
+		# _.defaults options,
+		# 	beforeSend: (xhr) ->
+		# 		token = $('meta[name="csrf-token"]').attr('content')
+		# 		xhr.setRequestHeader('X-CSRF-Token', token)
+
 		if method isnt "read"
 			_.defaults options,
 				beforeSend: _.bind(methods.beforeSend, 	entity)
-				complete:		_.bind(methods.complete, 		entity)
+				complete:		_.bind(methods.complete, 		entity) 
 
 		sync = _sync(method, entity, options) # XHR returned
 
