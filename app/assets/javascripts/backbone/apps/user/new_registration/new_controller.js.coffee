@@ -12,8 +12,7 @@
 				App.mainBus.trigger "signup:cancel"
 
 			@listenTo @signupView.model, "created",  (model, response) ->
-				# create currentUser
-				App.entitiesBus.trigger "create:current:user", response
+				@signupComplete model, response
 
 			@formView = App.mainBus.request "form:wrapper", @signupView
 
@@ -25,6 +24,12 @@
 
 		onBeforeDestroy: ->
 			@formView.destroy()
+
+		signupComplete: (model, response) ->
+			App.entitiesBus.trigger "create:current:user", response
+			$(@formView.el).fadeOut 400, ->
+				App.mainBus.trigger "signup:cancel"
+
 
 
 

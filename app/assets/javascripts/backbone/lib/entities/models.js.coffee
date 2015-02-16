@@ -17,7 +17,6 @@
 		isDestroyed: -> 
 			@get "_destroy"
 
-
 		# Override default Backbone save method, setting wait: true
 		# We will wait for server before setting the new attributes
 		# on the model.

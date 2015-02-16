@@ -24,7 +24,7 @@
 			$("#overlay")
 				.height(docHeight)
 				.hide()
-				.fadeTo(300, 0.7)
+				.fadeTo(300, 0.5)
 				.css
 					'position': 'absolute'
 					'top': 0
@@ -35,6 +35,9 @@
 
 		removeBlackOverlay: ->
 			$("#overlay").remove()
+
+		nameFromEmail: (email) ->
+			email.substring 0, email.indexOf("@") 
 
 	App.mainBus.reply "save:token", ->
 		App.csrfToken = $("meta[name='csrf-token']").attr('content')
