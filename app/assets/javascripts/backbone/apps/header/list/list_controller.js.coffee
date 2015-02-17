@@ -13,6 +13,8 @@
 			@listenTo @listView, "signup:button:clicked", ->
 				@signupUser()
 
+			console.log @listView.collection
+
 		signupUser: ->
 			App.mainBus.trigger "user:signup"
 

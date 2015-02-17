@@ -9,3 +9,8 @@
 
 	HeaderApp.on "start", (navs) ->
 		API.list navs
+
+	App.mainBus.on "user:authenticated", ->
+		App.navs = App.entitiesBus.request "nav:authenticated"
+		console.log "tu", App.navs
+

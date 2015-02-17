@@ -34,14 +34,12 @@
 		getNavsAuthenticated: ->
 			navs = new Entities.NavsCollection [
 				{ name: "Log in", 	id: "login",	url: "#", icon: "fi fi-power" }
-				{ name: "Sign up",	id: "singup",	url: "#", icon: "fi fi-skull" }
-			]
-
-		getNavsUnauthenticated: ->
-			navs = new Entities.NavsCollection [
-				{ name: "Log out", 	id: "logout",	url: "#", icon: "fi fi-power" }
+				{ name: "Log out",	id: "singup",	url: "#", icon: "fi fi-skull" }
 			]
 
 	App.entitiesBus.reply "nav:entities", ->
 		API.getNavs()
+
+	App.entitiesBus.reply "nav:authenticated", ->
+		API.getNavsAuthenticated()
 

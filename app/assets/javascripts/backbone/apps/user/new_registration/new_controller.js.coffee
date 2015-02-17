@@ -34,7 +34,10 @@
 			$(@formView.el).fadeOut 50, ->
 				App.mainBus.trigger "signup:close:form"
 
+			
+
 			App.mainBus.trigger "show:signup:message"
+
 
 
 

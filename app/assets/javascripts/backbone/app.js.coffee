@@ -32,4 +32,5 @@
 
 	App.mainBus.reply "default:region", App.marketRegion 
 
+
 	App

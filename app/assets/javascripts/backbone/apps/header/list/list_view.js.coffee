@@ -15,3 +15,9 @@
 			"click #login": 	"login:button:clicked"
 			"click #logout": 	"logout:button:clicked"
 			"click #signup": 	"signup:button:clicked"
+
+		collectionEvents: 
+			"change": "changeMenuList"
+
+		changeMenuList: ->
+			console.log "zmieniamy menu"
