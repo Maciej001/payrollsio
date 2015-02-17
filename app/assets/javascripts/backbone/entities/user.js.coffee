@@ -48,9 +48,6 @@
 
 		createCurrentUser: (response) ->
 			App.currentUser = new Entities.User response
-			console.log "nowy user", response
-			console.log "zajebisty nowy user", App.currentUser 
-			console.log App.currentUser.get("email")
 
 	App.entitiesBus.reply "users:entities", ->
 		API.getUsers()

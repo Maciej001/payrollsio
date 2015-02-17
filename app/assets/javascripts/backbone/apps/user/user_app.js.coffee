@@ -7,12 +7,10 @@
 				region: App.userRegion
 
 		signup: ->
-			App.addBlackOverlay()
 			@signupController = new UserApp.Signup.Controller 
 				region: App.formRegion
 
-		signupCancel: ->
-			App.removeBlackOverlay()
+		signupCloseForm: ->
 			@signupController.destroy()
 
 	UserApp.on "start", ->
@@ -21,8 +19,10 @@
 	App.mainBus.on "user:signup", ->
 		API.signup()
 
-	App.mainBus.on "signup:cancel", ->
-		API.signupCancel()
+	App.mainBus.on "signup:close:form", ->
+		API.signupCloseForm()
+
+	
 
 
 
