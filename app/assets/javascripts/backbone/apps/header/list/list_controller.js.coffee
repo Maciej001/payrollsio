@@ -13,7 +13,8 @@
 			@listenTo @listView, "signup:button:clicked", ->
 				@signupUser()
 
-			console.log @listView.collection
+			@listenTo App.mainBus, "rerender:navs", (navs) ->
+				@listView.collection.reset navs.toJSON
 
 		signupUser: ->
 			App.mainBus.trigger "user:signup"
@@ -21,3 +22,8 @@
 		getListView: (navs) ->
 			new List.Header	
 				collection: navs
+
+		App.mainBus.on "user:authenticated", ->
+			navs = App.entitiesBus.request "nav:authenticated"
+			App.mainBus.trigger "rerender:navs", navs
+

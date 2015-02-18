@@ -1,6 +1,7 @@
 @Payrollsio.module "Views", (Views, App, Backbone, Marionette, $, _) ->
 
 	_destroy = Marionette.View::destroy
+	
 	_.extend Marionette.View::,
 
 		# default value is true
@@ -23,29 +24,10 @@
 			for key, val of _.pick(@options, args...)
 				@[key] = val
 
-		destroy: (args...) ->
-			# When destroy() method is called on crew member, we can nicely 
-			# remove the view using _destroy arg on model - entities/_base/models.js.coffee
-			
-			if @model?.isDestroyed()
-				wrapper = @$el.toggleWrapper
-					className: "opacity"
-					backgroundColor: "red"
-
-				wrapper.fadeOut 400, ->
-					$(@).remove()
-
-				# => used so this points still to CrewMember view
-				@$el.fadeOut 400, =>
-					_destroy.apply @, args
-
-			else
-				_destroy.apply @, args
 
 		templateHelpers: ->
 
 			linkTo: (name, url, options = {}) ->
-				# _.defaults - fills in 'external' option if is not defined with the value of 'false'
 				_.defaults options,
 					external: false
 

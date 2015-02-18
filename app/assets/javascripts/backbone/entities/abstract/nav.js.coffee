@@ -33,8 +33,7 @@
 
 		getNavsAuthenticated: ->
 			navs = new Entities.NavsCollection [
-				{ name: "Log in", 	id: "login",	url: "#", icon: "fi fi-power" }
-				{ name: "Log out",	id: "singup",	url: "#", icon: "fi fi-skull" }
+				{ name: "Log out",	id: "logout",	url: "#", icon: "fi fi-power" }
 			]
 
 	App.entitiesBus.reply "nav:entities", ->
