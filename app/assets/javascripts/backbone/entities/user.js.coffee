@@ -16,7 +16,7 @@
 
 	class Entities.UserSession extends App.Entities.Model
 		url: Routes.user_session_path()
-
+		paramRoot: "user"
 		defaults:
 			"email": ""
 			"password": ""
@@ -46,6 +46,10 @@
 		newUserRegistration: ->
 			new Entities.UserRegistration
 
+		userSigninEntity: ->
+			console.log "debug: getting new user for signin entity"
+			new Entities.UserSession
+
 		createCurrentUser: (response) ->
 			App.currentUser = new Entities.User response
 
@@ -61,5 +65,17 @@
 	App.entitiesBus.reply "new:user:registration", ->
 		API.newUserRegistration()
 
+	App.entitiesBus.reply "user:signin:entity", ->
+		API.userSigninEntity()
+
 	App.entitiesBus.on "create:current:user", (response) ->
 		API.createCurrentUser response
+
+
+
+
+
+
+
+
+

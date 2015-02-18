@@ -7,10 +7,6 @@
 				region: App.headerRegion
 				navs: 	navs
 
-		change: (navs) ->
-			console.log "old navs ", @headerNavs.collection
-			@headerNavs.collection = navs
-
 	HeaderApp.on "start", (navs) ->
 		API.list navs
 

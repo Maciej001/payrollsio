@@ -41,7 +41,7 @@
 
 			# After 10 seconds Message slides up and disappears
 			messageView.$el
-				.delay(10000)
+				.delay(7000)
 				.slideUp(300)
 				.queue ->
 					region.reset()

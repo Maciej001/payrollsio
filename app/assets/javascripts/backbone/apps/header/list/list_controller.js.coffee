@@ -13,11 +13,18 @@
 			@listenTo @listView, "signup:button:clicked", ->
 				@signupUser()
 
+			@listenTo @listView, "login:button:clicked", ->
+				@signinUser()
+
 			@listenTo App.mainBus, "rerender:navs", (navs) ->
-				@listView.collection.reset navs.toJSON
+				@listView.collection.reset navs.toJSON()
 
 		signupUser: ->
 			App.mainBus.trigger "user:signup"
+
+		signinUser: ->
+			console.log "debug: user:signin triggered"
+			App.mainBus.trigger "user:signin"
 
 		getListView: (navs) ->
 			new List.Header	
@@ -26,4 +33,6 @@
 		App.mainBus.on "user:authenticated", ->
 			navs = App.entitiesBus.request "nav:authenticated"
 			App.mainBus.trigger "rerender:navs", navs
+
+
 

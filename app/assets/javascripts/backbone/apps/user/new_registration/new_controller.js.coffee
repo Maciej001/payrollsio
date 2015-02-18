@@ -5,7 +5,7 @@
 		initialize: (options) ->
 			App.addBlackOverlay()
 
-			formRegion = options.region
+			{ region } = options
 			user = App.entitiesBus.request "new:user:registration"
 
 			@signupView = @getSignupView user
@@ -18,7 +18,7 @@
 
 			@formView = App.mainBus.request "form:wrapper", @signupView
 
-			@show @formView, region: formRegion
+			@show @formView, region: region
 
 		getSignupView: (user) ->
 			new Signup.User
