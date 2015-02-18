@@ -22,6 +22,14 @@
 	.inline-list {
 		padding: 10px 10px 0 0;
 	}
+
+	a { 
+		color: $font-black; 
+		text-decoration: underline;
+		&:hover {
+			color: $blue;
+		}
+	}
 }
 
 form {

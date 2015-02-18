@@ -15,8 +15,9 @@
 			@signinController = new UserApp.Signin.Controller
 				region: App.formRegion
 
-		signupCloseForm: ->
-			@signupController.destroy()
+		closeForm: (controller) ->
+			console.log "debug: closing form"
+			controller.destroy()
 
 	UserApp.on "start", ->
 		API.show()
@@ -27,8 +28,8 @@
 	App.mainBus.on "user:signin", ->
 		API.signin()
 
-	App.mainBus.on "signup:close:form", ->
-		API.signupCloseForm()
+	App.mainBus.on "close:form", (controller) ->
+		API.closeForm controller
 
 	
 

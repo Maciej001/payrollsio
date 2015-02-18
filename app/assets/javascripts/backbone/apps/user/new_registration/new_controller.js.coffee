@@ -11,7 +11,7 @@
 			@signupView = @getSignupView user
 
 			@listenTo @signupView, "form:cancel", ->
-				App.mainBus.trigger "signup:close:form"
+				App.mainBus.trigger "close:form", @
 
 			@listenTo @signupView.model, "created",  (model, response) ->
 				@signupComplete model, response
@@ -34,7 +34,7 @@
 			App.mainBus.trigger "user:authenticated"
 
 			$(@formView.el).fadeOut 50, ->
-				App.mainBus.trigger "signup:close:form"
+				App.mainBus.trigger "close:form"
 
 			App.mainBus.trigger "show:signup:message"
 

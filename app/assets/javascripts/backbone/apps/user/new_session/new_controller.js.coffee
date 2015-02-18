@@ -11,9 +11,17 @@
 
 			@view = @getSigninView user
 
+			@listenTo @view, "form:cancel", ->
+				App.mainBus.trigger "close:form", @
+
 			@formView = App.mainBus.request "form:wrapper", @view
 
 			@show @formView, region: region
+
+
+		onBeforeDestroy: ->
+			App.removeBlackOverlay()
+			@formView.destroy()
 
 		getSigninView: (user) ->
 			new Signin.User
