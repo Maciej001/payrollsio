@@ -16,7 +16,6 @@
 				region: App.formRegion
 
 		closeForm: (controller) ->
-			console.log "debug: closing form"
 			controller.destroy()
 
 	UserApp.on "start", ->

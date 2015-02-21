@@ -23,7 +23,7 @@
 		getSignupView: (user) ->
 			new Signup.User
 				model: user
-
+ 
 		onBeforeDestroy: ->
 			App.removeBlackOverlay()
 			@formView.destroy()
@@ -31,12 +31,14 @@
 		signupComplete: (model, response) ->
 			App.entitiesBus.trigger "create:current:user", response
 
+			# is catched by header, where menu gets rerendered
 			App.mainBus.trigger "user:authenticated"
 
-			$(@formView.el).fadeOut 50, ->
-				App.mainBus.trigger "close:form"
-
 			App.mainBus.trigger "show:signup:message"
+
+			$(@formView.el).fadeOut 200, =>
+				App.mainBus.trigger "close:form", @
+
 
 
 

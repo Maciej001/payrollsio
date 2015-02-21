@@ -21,7 +21,9 @@
 
 		onBeforeDestroy: ->
 			App.removeBlackOverlay()
-			@formView.destroy()
+			@formV
+
+			iew.destroy()
 
 		getSigninView: (user) ->
 			new Signin.User
