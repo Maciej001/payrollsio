@@ -5,46 +5,34 @@
 		initialize: (options = {}) ->
 			@contentView = options.view
 
-			# at this point options.config was not passed
 			@formLayout = @getFormLayout options.config
 
-			# @formLayout.on "show", =>
-			# 	@formContentRegion()
-			# instead we can write 
-			# when we use listenTo, listeners are removed when controller
-			# closes down
 			@listenTo @formLayout, "show", @formContentRegion
-			@listenTo @formLayout, "form:submit", @formSubmit 
+			@listenTo @formLayout, "form:submit", @formSubmit
 			@listenTo @formLayout, "form:cancel", @formCancel
 
 		formCancel: ->
-			# forward event to edit_controller
 			@contentView.triggerMethod "form:cancel"
 
 		formSubmit: ->
-			# backbone.syphone takes the formLayout and returns
-			# JSON object with all data serialized
+			console.log "debug: formSubmit was triggered."
 
 			data = Backbone.Syphon.serialize @formLayout 
 
-			# first check data and than save it
-			# trigger "form:submit" event on our editView and ask
-			# if it's ok to update the model
-			if @contentView.triggerMethod("form:submit", data) isnt false  
-				model = @contentView.model
-				collection = @contentView.collection
-				@processFormSubmit data, model, collection
+			console.log "debug: Syphone data: ", data
+
+			model = @contentView.model
+			collection = @contentView.collection
+
+			console.log "debug: sending for processing: ", data, model, collection
+			@processFormSubmit data, model, collection
 
 		processFormSubmit: (data, model, collection) ->
-			# before the model attributes are updated we want to wait 
-			# for the server to validate data, and update only
-			# if we don't get any errors
-			# Let's implement it in our entities/_base/models.js.coffee
+			console.log "debug: model to be saved: ", data, model
 			model.save data,  
-				collection: collection # updated save method of model
+				collection: collection 
 
 		formContentRegion: ->
-			# assign @region so our controlle show action works properly 
 			@region = @formLayout.formContentRegion
 			@show @contentView 
 
@@ -56,7 +44,6 @@
 			# in below case @contentView.form - can be either 
 			# property or a method and we still get an object
 			# form { footer: false }
-			# otherwise we could just 
 			config = @getDefaultConfig _.result(@contentView, "form")
 
 			# takes config objects, and adds/overrides its properties 
@@ -67,14 +54,10 @@
 			buttons = @getButtons config.buttons
 
 			new Form.FormWrapper
-				# let's create options object:
-				# pass config options to our form view
 				config: config
 
 				# forms require models in all cases no matter what!
 				model: @contentView.model 
-
-				# returned by "form:button:entities" request
 				buttons: buttons 
 
 		getDefaultConfig: (config = {}) ->

@@ -5,20 +5,23 @@
 		initialize: (options) ->
 			App.addBlackOverlay()
 
-			{ region } = options
+			{ @region } = options
+
 			user = App.entitiesBus.request "new:user:registration"
 
-			@signupView = @getSignupView user
+			signupView = @getSignupView user
 
-			@listenTo @signupView, "form:cancel", ->
-				App.mainBus.trigger "close:form", @
+			@listenTo signupView, "form:cancel", ->
+				App.mainBus.trigger "close:form", 
+					region: @region
+					controller: @
 
-			@listenTo @signupView.model, "created",  (model, response) ->
+			@listenTo signupView.model, "created",  (model, response) ->
 				@signupComplete model, response
 
-			@formView = App.mainBus.request "form:wrapper", @signupView
+			@formView = App.mainBus.request "form:wrapper", signupView
 
-			@show @formView, region: region
+			@show @formView, region: @region
 
 		getSignupView: (user) ->
 			new Signup.User
@@ -37,7 +40,8 @@
 			App.mainBus.trigger "show:signup:message"
 
 			$(@formView.el).fadeOut 200, =>
-				App.mainBus.trigger "close:form", @
+				App.mainBus.trigger "close:form", 
+					controller: @
 
 
 

@@ -16,10 +16,8 @@
 		ui: 
 			buttonContainer: "ul.inline-list"
 
-		# triggers are stopped with preventDefault and stopPropagation methods
-		# triggers are listened from form_controller
 		triggers: 
-			"submit"	: 	"form:submit" # implemented in form_controller
+			"submit"	: 	"form:submit" 
 			"click [data-form-button='cancel']":  "form:cancel "
 
 		modelEvents:
@@ -100,6 +98,7 @@
 			el.after(sm).closest(".row").addClass("error")
 
 		syncStart: (model) ->
+			console.log "jaki model before sync", model
 			# form looks like inactive to prevent double-submission
 			@addOpacityWrapper() in @config.syncing
 			

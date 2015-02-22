@@ -6,8 +6,7 @@
 		model: 	Entities.User
 
 	class Entities.UserRegistration extends App.Entities.Model
-		# url: Routes.user_registration_path()
-		url: "users.json"
+		url: Routes.user_registration_path()
 		paramRoot: "user"
 		defaults:
 			"email": ""
@@ -15,7 +14,7 @@
 			"password_confirmation": ""
 
 	class Entities.UserSession extends App.Entities.Model
-		url: Routes.user_session_path()
+		url: '/users/sing_in.json'
 		paramRoot: "user"
 		defaults:
 			"email": ""
@@ -23,7 +22,7 @@
 
 	class Entities.UserPasswordRecovery extends App.Entities.Model
 		url: Routes.user_password_path()
-
+		paramRoot: "user"
 		defaults: 
 			email: ""
 
@@ -46,8 +45,7 @@
 		newUserRegistration: ->
 			new Entities.UserRegistration
 
-		userSigninEntity: ->
-			console.log "debug: getting new user for signin entity"
+		newUserSigninEntity: ->
 			new Entities.UserSession
 
 		createCurrentUser: (response) ->
@@ -65,8 +63,8 @@
 	App.entitiesBus.reply "new:user:registration", ->
 		API.newUserRegistration()
 
-	App.entitiesBus.reply "user:signin:entity", ->
-		API.userSigninEntity()
+	App.entitiesBus.reply "new:user:signin:entity", ->
+		API.newUserSigninEntity()
 
 	App.entitiesBus.on "create:current:user", (response) ->
 		API.createCurrentUser response

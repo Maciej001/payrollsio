@@ -12,10 +12,15 @@
 			@region = options.region or App.mainBus.request "default:region"
 			super options
 
+			# create unique id for each controller
+			@_instance_id = _.uniqueId("controller_")
+			App.mainBus.command "register:instance", @, @_instance_id
+
 		# arguments passed to destroy will be automatically passed 
 		# to super so we don't need to explicitly pass them
 		destroy: ->
 			super
+			App.mainBus.command "unregister:instance", @, @_instance_id
 
 		show: (view, options = {}) ->
 			_.defaults options,
@@ -46,7 +51,7 @@
 
 		_manageView: (view, options) ->
 			if options.loading
-				# App.execute "show:loading", view, options 
+				App.mainBus.command "show:loading", view, options 
 			else
 				# we could use @region.show view instead
 				options.region.show view

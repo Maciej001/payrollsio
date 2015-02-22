@@ -4,27 +4,32 @@
 
 		initialize: (options) ->
 			App.addBlackOverlay()
-			{ region } = options
 
-			user = App.entitiesBus.request "user:signin:entity"
-			console.log "debug: got new user entity: ", user
+			{ @region } = options
 
-			@view = @getSigninView user
+			user = App.entitiesBus.request "new:user:signin:entity"
 
-			@listenTo @view, "form:cancel", ->
-				App.mainBus.trigger "close:form", @
+			@signinView = @getSigninView user
 
-			@formView = App.mainBus.request "form:wrapper", @view
+			@listenTo @signinView, "form:cancel", ->
+				App.mainBus.trigger "close:form", 
+					region: @region
+					controller: @
 
-			@show @formView, region: region
+			@listenTo @signinView.model, "created",  (model, response) ->
+				@signinComplete model, response
 
+			@formView = App.mainBus.request "form:wrapper", @signinView
+
+			@show @formView, region: @region
 
 		onBeforeDestroy: ->
 			App.removeBlackOverlay()
-			@formV
-
-			iew.destroy()
+			@formView.destroy()
 
 		getSigninView: (user) ->
 			new Signin.User
 				model: user
+
+		signinComplete: (model, response) ->
+			console.log "signin complete", model, response
