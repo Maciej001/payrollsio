@@ -20,30 +20,29 @@
 		# Override default Backbone save method, setting wait: true
 		# We will wait for server before setting the new attributes
 		# on the model.
-		# Additionally we will fire custom event
-		# When model is saved collection can be passed in options
-		# so you can then update it.
-		save: (data, options = {}) ->
+		# Additionally we will fire custom event when model is saved.
+		# Collection can be passed in options so you can then update it.
+		save: (data, options = {}) =>
 			isNew = @isNew()
 
 			_.defaults options,
-				wait: true
+				 # wait for the server before setting the new 
+				 # attribus on the model
+				# wait: true
 				isNew: isNew
+
 				# save method accepts 'success' and 'error' callback functions 
 				# in the options hash which will be passed the 
 				# arguments(model, response, options).
-				# _.bind(function, object, arguments)
-				# _.bind binds function to an object and passes arguments
-
-				# success: 	_.bind(@saveSuccess, @, isNew, options.collection)
-
 				success: (model, response, options) =>
 					@saveSuccess model, response, options
 
-				error:		_.bind(@saveError, @)
+				error: 	_.bind(@saveError, @)
 
-			# remove _errors attribute set below in saveError function
+			# remove _errors attribute  attached to model  
 			@unset "_errors"
+
+			console.log "debug: model.save sends data + options", data, options, @model
 
 			super data, options
 
@@ -51,9 +50,6 @@
 			isNew = options.isNew
 			collection = options.collection
 
-			# Model will trigger events that will be available for other views
-			# and can act upon them
-			# Eg.: our edit view should update name of the crew member
 			if isNew 
 				# add model to the collection
 				collection.add @ if collection
@@ -85,16 +81,4 @@
 
 			# don'f forget to unset before next submit of the form. On submit all 
 			# error messages should disapear from the form. 
-
-
-			
-
-
-
-
-
-
-
-
-
 

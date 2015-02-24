@@ -4,10 +4,12 @@
 
 		initialize: (options) ->
 			App.addBlackOverlay()
-
+			
 			{ @region } = options
 
 			user = App.entitiesBus.request "new:user:signin:entity"
+
+			console.log "new user in signin controller", user
 
 			@signinView = @getSigninView user
 
@@ -32,4 +34,12 @@
 				model: user
 
 		signinComplete: (model, response) ->
-			console.log "signin complete", model, response
+			App.entitiesBus.trigger "create:current:user", response
+
+			App.mainBus.trigger "user:authenticated"
+
+			App.mainBus.trigger "show:message", "welcome back!"
+
+			$(@formView.el).fadeOut 200, =>
+				App.mainBus.trigger "close:form", 
+					controller: @

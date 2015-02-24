@@ -4,8 +4,10 @@
 
 		initialize: (options = {}) ->
 			@contentView = options.view
-
+			console.log "@contentView model", @contentView.model
+			console.log "form controller options.config", options.config
 			@formLayout = @getFormLayout options.config
+			console.log "formLayout", @formLayout
 
 			@listenTo @formLayout, "show", @formContentRegion
 			@listenTo @formLayout, "form:submit", @formSubmit
@@ -15,20 +17,16 @@
 			@contentView.triggerMethod "form:cancel"
 
 		formSubmit: ->
-			console.log "debug: formSubmit was triggered."
-
 			data = Backbone.Syphon.serialize @formLayout 
-
-			console.log "debug: Syphone data: ", data
-
-			model = @contentView.model
+			model = @formLayout.model
+			# w momencie submit nastepuje zmiana modelu
+			console.log "what is @model in formSubmit: ", @formLayout.model
+			console.log "form submit @formLayout.model", model
 			collection = @contentView.collection
 
-			console.log "debug: sending for processing: ", data, model, collection
 			@processFormSubmit data, model, collection
 
 		processFormSubmit: (data, model, collection) ->
-			console.log "debug: model to be saved: ", data, model
 			model.save data,  
 				collection: collection 
 
@@ -46,12 +44,13 @@
 			# form { footer: false }
 			config = @getDefaultConfig _.result(@contentView, "form")
 
-			# takes config objects, and adds/overrides its properties 
-			# with optins object properties.
-			# This is so footer:true, can be passed when creating 
-			# form wrapper in edit_controller
+			# takes config objects, and adds/overwrites its properties 
+			# with options object properties.
 			_.extend config, options
+
 			buttons = @getButtons config.buttons
+
+
 
 			new Form.FormWrapper
 				config: config
@@ -73,14 +72,10 @@
 												# form_view.js.coffee
 
 		getButtons: (buttons = {}) ->
-			App.entitiesBus.request("form:button:entities", buttons, @contentView.model) unless buttons is false
+			App.entitiesBus.request("get:form:button:entities", buttons, @contentView.model) unless buttons is false
 	
 	App.mainBus.reply "form:wrapper", (contentView, options = {}) ->
-		throw new Error "No model found inside of form's contentView" unless contentView.model
-		# Controller takes only one argument so we have wrap our 
-		# parameters in the object and pass it to controller
-		# Since we create new Controller we have to implement
-		# initialize function above     
+		throw new Error "No model found inside of form's contentView" unless contentView.model 
 
 		formController = new Form.Controller
 			view: contentView

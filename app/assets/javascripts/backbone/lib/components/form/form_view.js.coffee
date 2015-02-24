@@ -97,12 +97,12 @@
 			sm = $("<small>").text(error)
 			el.after(sm).closest(".row").addClass("error")
 
-		syncStart: (model) ->
-			console.log "jaki model before sync", model
+		syncStart: ->
+			console.log "jaki model before sync", @model
 			# form looks like inactive to prevent double-submission
-			@addOpacityWrapper() in @config.syncing
+			# @addOpacityWrapper() in @config.syncing
 			
-		syncStop: (model) ->
-			@addOpacityWrapper(false) if @config.syncing
+		syncStop: ->
+			# @addOpacityWrapper(false) if @config.syncing
 
 

@@ -28,7 +28,6 @@ gem 'better_errors'
 gem 'haml'
 gem 'jquery-rails'
 
-gem 'backbone-on-rails'
 gem 'momentjs-rails', '~> 2.8.3'  # data and time
 
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder

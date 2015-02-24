@@ -2,9 +2,8 @@
 	
 	class Entities.Button extends Entities.Model 
 		defaults: 
-			# all buttons will have button type, if you want one button
-			# to be able to submit form on pressing 'enter' you have to 
-			# change buttonType = 'submit', or otherwise browser would
+			# if one button has to be able to submit form on pressing 'enter',
+			# change buttonType to 'submit', or otherwise browser would
 			# use first button on the form and 'click' it even if it were 
 			# 'cancel' button
 			buttonType: "button"
@@ -43,7 +42,7 @@
 				cancel:			"Cancel"
 				placemenet:	"right"
 
-	App.entitiesBus.reply "form:button:entities", (buttons = {}, model) ->
+	App.entitiesBus.reply "get:form:button:entities", (buttons = {}, model) ->
 		API.getFormButtons buttons, model
 
 

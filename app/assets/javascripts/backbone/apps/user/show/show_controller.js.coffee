@@ -11,8 +11,12 @@
 
 			@show @userLayoutView
 
-			App.mainBus.on "show:signup:message", =>
-				@showSignupMessage()
+			App.mainBus.on "show:message", (message) =>
+				@showMessage message
+
+		getCurrentUserName: ->
+			name = App.nameFromEmail App.currentUser.get('email')
+			capitalizedName = name.capitalizeWord()
 
 		getUserLayoutView: ->
 			new Show.UserLayout
@@ -25,12 +29,10 @@
 			statsView = @getStatsView()
 			@show statsView, region: @userLayoutView.userStatsRegion
 
-		showSignupMessage: ->
-			name = App.nameFromEmail App.currentUser.get('email')
-			capitalizedName = name.capitalizeWord()
+		showMessage: (message) ->
 			messageModel = new Show.MessageModel
-				name: 		capitalizedName
-				message: "welcome aboard!"
+				name: 		@getCurrentUserName()
+				message: 	message
 
 			messageView = @getMessageView 
 				model: messageModel
@@ -46,7 +48,6 @@
 				.queue ->
 					region.reset()
 			false
-
 
 		getActionsView: ->
 			new Show.Actions 

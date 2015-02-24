@@ -14,7 +14,7 @@
 			"password_confirmation": ""
 
 	class Entities.UserSession extends App.Entities.Model
-		url: '/users/sing_in.json'
+		url: Routes.user_session_path()
 		paramRoot: "user"
 		defaults:
 			"email": ""
@@ -48,6 +48,7 @@
 		newUserSigninEntity: ->
 			new Entities.UserSession
 
+
 		createCurrentUser: (response) ->
 			App.currentUser = new Entities.User response
 
@@ -64,7 +65,9 @@
 		API.newUserRegistration()
 
 	App.entitiesBus.reply "new:user:signin:entity", ->
-		API.newUserSigninEntity()
+		entity = API.newUserSigninEntity()
+		console.log "new:user:singin:entity returns", entity
+		entity
 
 	App.entitiesBus.on "create:current:user", (response) ->
 		API.createCurrentUser response
