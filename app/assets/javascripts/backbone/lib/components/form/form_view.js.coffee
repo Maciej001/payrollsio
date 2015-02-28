@@ -98,7 +98,6 @@
 			el.after(sm).closest(".row").addClass("error")
 
 		syncStart: ->
-			console.log "jaki model before sync", @model
 			# form looks like inactive to prevent double-submission
 			# @addOpacityWrapper() in @config.syncing
 			

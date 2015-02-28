@@ -41,7 +41,6 @@
   };
 
   Backbone.sync = function(method, model, options) {
-    console.log("debug: Backbone.sync ", method, model, options);
     var type = methodMap[method];
     var response ={};
 
@@ -89,9 +88,7 @@
     };
 
     // Make the request.
-    response = $.ajax(params);
-    console.log(response);
-    return response;
+    $.ajax(params);
   }
 
 })(jQuery);

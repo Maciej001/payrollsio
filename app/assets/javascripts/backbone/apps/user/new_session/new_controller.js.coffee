@@ -9,8 +9,6 @@
 
 			user = App.entitiesBus.request "new:user:signin:entity"
 
-			console.log "new user in signin controller", user
-
 			@signinView = @getSigninView user
 
 			@listenTo @signinView, "form:cancel", ->

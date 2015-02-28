@@ -4,10 +4,7 @@
 
 		initialize: (options = {}) ->
 			@contentView = options.view
-			console.log "@contentView model", @contentView.model
-			console.log "form controller options.config", options.config
 			@formLayout = @getFormLayout options.config
-			console.log "formLayout", @formLayout
 
 			@listenTo @formLayout, "show", @formContentRegion
 			@listenTo @formLayout, "form:submit", @formSubmit
@@ -19,9 +16,6 @@
 		formSubmit: ->
 			data = Backbone.Syphon.serialize @formLayout 
 			model = @formLayout.model
-			# w momencie submit nastepuje zmiana modelu
-			console.log "what is @model in formSubmit: ", @formLayout.model
-			console.log "form submit @formLayout.model", model
 			collection = @contentView.collection
 
 			@processFormSubmit data, model, collection

@@ -15,5 +15,13 @@
     <%= render 'layouts/messages' %>
     <%= yield %>
     
+    <script type="text/javascript">
+      <% if signed_in? -%>
+        Payrollsio.currentUser = new Payrollsio.Entities.User(<%= current_user.to_json.html_safe %>);
+      <% else -%>
+        Payrollsio.currentUser = null;
+      <% end -%>
+    </script>
+
   </body>
 </html>

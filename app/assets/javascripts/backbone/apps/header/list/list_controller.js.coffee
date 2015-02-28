@@ -36,7 +36,7 @@
 			App.mainBus.trigger "user:logout"
 
 		App.mainBus.on "user:authenticated", ->
-			navs = App.entitiesBus.request "nav:authenticated"
+			navs = App.entitiesBus.request "nav:entities"
 			App.mainBus.trigger "rerender:navs", navs
 
 

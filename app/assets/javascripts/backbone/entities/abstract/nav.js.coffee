@@ -26,19 +26,16 @@
 
 	API = 
 		getNavs: ->
-			navs = new Entities.NavsCollection [
-				{ name: "Log in", 	id: "login",	url: "#", icon: "fi fi-power" }
-				{ name: "Sign up",	id: "signup",	url: "#", icon: "fi fi-skull" }
-			]
-
-		getNavsAuthenticated: ->
-			navs = new Entities.NavsCollection [
-				{ name: "Log out",	id: "logout",	url: "#", icon: "fi fi-power" }
-			]
+			if App.currentUser
+				navs = new Entities.NavsCollection [
+					{ name: "Log out",	id: "logout",	url: "#", icon: "fi fi-power" }
+				]
+			else
+				navs = new Entities.NavsCollection [
+					{ name: "Log in", 	id: "login",	url: "#", icon: "fi fi-power" }
+					{ name: "Sign up",	id: "signup",	url: "#", icon: "fi fi-skull" }
+				] 
 
 	App.entitiesBus.reply "nav:entities", ->
 		API.getNavs()
-
-	App.entitiesBus.reply "nav:authenticated", ->
-		API.getNavsAuthenticated()
 

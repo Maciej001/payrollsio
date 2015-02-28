@@ -42,8 +42,6 @@
 			# remove _errors attribute  attached to model  
 			@unset "_errors"
 
-			console.log "debug: model.save sends data + options", data, options, @model
-
 			super data, options
 
 		saveSuccess: (model, response, options={}) =>

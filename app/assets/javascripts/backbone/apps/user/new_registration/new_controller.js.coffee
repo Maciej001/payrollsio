@@ -36,12 +36,12 @@
 
 			# is catched by header, where menu gets rerendered
 			App.mainBus.trigger "user:authenticated"
-
 			App.mainBus.trigger "show:message", "welcome aboard!"
 
 			$(@formView.el).fadeOut 200, =>
 				App.mainBus.trigger "close:form", 
 					controller: @
+
 
 
 

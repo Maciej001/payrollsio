@@ -65,9 +65,7 @@
 		API.newUserRegistration()
 
 	App.entitiesBus.reply "new:user:signin:entity", ->
-		entity = API.newUserSigninEntity()
-		console.log "new:user:singin:entity returns", entity
-		entity
+		API.newUserSigninEntity()
 
 	App.entitiesBus.on "create:current:user", (response) ->
 		API.createCurrentUser response
